@@ -6,7 +6,7 @@ class StepperHome extends StatefulWidget {
 }
 
 class _StepperHomeState extends State<StepperHome> {
-  var current_step = 0;
+  var currentstep = 0;
   bool complete = false;
   List<Step> steps = [
     Step(
@@ -24,7 +24,7 @@ class _StepperHomeState extends State<StepperHome> {
       ),
     ): Stepper(
       steps: steps,
-      currentStep: current_step,
+      currentStep: currentstep,
       onStepContinue: next,
       onStepCancel: cancel,
       onStepTapped: (taped) => goTo(taped),
@@ -32,18 +32,18 @@ class _StepperHomeState extends State<StepperHome> {
   }
 
   next() {
-    current_step + 1 != steps.length
-        ? goTo(current_step + 1)
+    currentstep + 1 != steps.length
+        ? goTo(currentstep + 1)
         : setState(() => complete = true);
   }
   goTo(int step){
     setState(() {
-      current_step = step;
+      currentstep = step;
     });
   }
   cancel(){
-    if(current_step>0){
-      goTo(current_step - 1);
+    if(currentstep>0){
+      goTo(currentstep - 1);
     }
   }
 }
